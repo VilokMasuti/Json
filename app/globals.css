@@ -144,4 +144,14 @@
   .textLight {
     @apply bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-950;
   }
+  .bgcard {
+    @apply backdrop-blur-sm;
+  }
+  .bgcard-light {
+    @apply bg-white/70;
+  }
+  .bgcard-dark {
+    @apply bg-black/50;
+  }
+
 }
