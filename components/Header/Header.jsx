@@ -1,6 +1,6 @@
 import { useTheme } from "../../hooks/useTheme"
 import { ThemeToggle } from "../Theme-toggle"
-const Header = ({ jsonData, handleReset }) => {
+const Header = ({ jsonData, handleReset, DownloadImage }) => {
   const { theme } = useTheme()
   return (
     <header className="border-b border-border sticky top-0 z-10 bg-background   antialiased  font-sans ">
@@ -14,10 +14,23 @@ const Header = ({ jsonData, handleReset }) => {
           `}>JSON Tree Visualizer</h1>
         <div className="flex items-center gap-4">
           {jsonData && (
-            <Button variant="outline" size="sm" onClick={handleReset} className="gap-2 bg-transparent ">
+            <>
+              <Button variant="outline" size="sm" onClick={handleReset} className="gap-2 bg-transparent ">
               <RotateCcw className="w-4 h-4" />
               Reset
             </Button>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={DownloadImage}
+                className="gap-2 bg-transparent hover:bg-muted"
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </Button>
+            </>
+
           )}
           <ThemeToggle />
         </div>
