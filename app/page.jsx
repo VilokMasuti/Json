@@ -1,13 +1,14 @@
-"use client"
-import { ThemeToggle } from "../components/Theme-toggle"
-import { Button } from "../components/ui/button"
-import { useTheme } from "../hooks/useTheme"
+'use client';
+import { Button } from '../components/ui/button';
+import { useTheme } from '../hooks/useTheme';
+import { ThemeToggle } from '../lib/Theme-toggle';
+import { SAMPLE_JSON } from '../lib/utils';
 
-import { ArrowRight } from "lucide-react"
-import Link from "next/link"
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Welcome() {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors  duration-400 antialiased  font-sans">
@@ -15,7 +16,7 @@ export default function Welcome() {
       <header className="border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <h1
-            className={`text-2xl font-sans font-light uppercase ${theme === "light" ? "textLight" : "textbg"
+            className={`text-2xl font-sans font-light uppercase ${theme === 'light' ? 'textLight' : 'textbg'
               }`}
           >
             JSON Tree Visualizer
@@ -25,19 +26,25 @@ export default function Welcome() {
       </header>
 
       {/* Main Content */}
-      <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 font-sans
-        ${theme === "light" ? "textLight" : "textbg "}
+      <main
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 font-sans
+        ${theme === 'light' ? 'textLight' : 'textbg '}
 
-        `}>
+        `}
+      >
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Section */}
           <div className="space-y-6">
             <div>
-              <h2 className={`text-4xl md:text-5xl mb-4 textbg font-sans font-light uppercase ${theme === "light" ? "textLight" : "textbg"
-                }`}>Visualize JSON Data</h2>
+              <h2
+                className={`text-4xl md:text-5xl mb-4 textbg font-sans font-light uppercase ${theme === 'light' ? 'textLight' : 'textbg'
+                  }`}
+              >
+                Visualize JSON Data
+              </h2>
               <p className="text-lg mb-6 text-accent-foreground  font-sans font-light">
-                Transform complex JSON structures into interactive, hierarchical tree visualizations. Search, explore,
-                and understand your data with ease.
+                Transform complex JSON structures into interactive, tree visualizations. Search,
+                explore, and understand your data with ease.
               </p>
             </div>
 
@@ -48,7 +55,9 @@ export default function Welcome() {
                 </div>
                 <div>
                   <h3 className="font-semibold ">Interactive Tree Visualization</h3>
-                  <p className="text-sm text-muted-foreground">Powered by React Flow for smooth navigation</p>
+                  <p className="text-sm text-muted-foreground">
+                    Powered by React Flow for smooth navigation
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -57,7 +66,9 @@ export default function Welcome() {
                 </div>
                 <div>
                   <h3 className="font-semibold ">Smart Search</h3>
-                  <p className="text-sm text-muted-foreground">Find nodes by JSON path (e.g-{">"} user.address.city)</p>
+                  <p className="text-sm text-muted-foreground">
+                    Find nodes by JSON path (e.g-{'>'} user.address.city)
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -66,13 +77,26 @@ export default function Welcome() {
                 </div>
                 <div>
                   <h3 className="font-semibold ">Dark & Light Mode</h3>
-                  <p className="text-sm text-muted-foreground">Comfortable viewing in any lighting condition</p>
+                  <p className="text-sm text-muted-foreground">
+                    Comfortable viewing in any lighting condition
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center  mt-1">
+                  ✓
+                </div>
+                <div>
+                  <h3 className="font-semibold ">Reset</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Reset the tree to its initial state
+                  </p>
                 </div>
               </div>
             </div>
 
             <Link href="/tree">
-              <Button size="lg" className="gap-2 font-sans cursor-pointer">
+              <Button size="lg" className="gap-2 font-sans cursor-pointer shadow-2xl">
                 Get Started <ArrowRight className="w-4 h-4  font-sans" />
               </Button>
             </Link>
@@ -80,26 +104,16 @@ export default function Welcome() {
 
           {/* Right Section - Feature Preview */}
           <div className="bg-card border border-border rounded-lg p-8 space-y-4 font-sans font-light">
-            <h3 className={` font-sans font-light   text-2xl textbg
-${theme === "light" ? "textLight" : "textbg"
-              }
+            <h3
+              className={` font-sans font-light   text-2xl textbg
+${theme === 'light' ? 'textLight' : 'textbg'}
 
-              `}>Example JSON</h3>
+              `}
+            >
+              Example JSON
+            </h3>
             <pre className="bg-muted p-4 rounded text-sm overflow-auto max-h-96 font-sans   text-accent-foreground font-light">
-              {`{
-  "user": {
-    "id": 1,
-    "name": "John Doe",
-    "address": {
-      "city": "New York",
-      "country": "USA"
-    }
-  },
-  "items": [
-    { "name": "item1" },
-    { "name": "item2" }
-  ]
-}`}
+              {JSON.stringify(SAMPLE_JSON, null, 2)}
             </pre>
             <p className="text-sm text-muted-foreground ">
               Paste your JSON and watch it transform into an interactive tree visualization.
@@ -108,5 +122,5 @@ ${theme === "light" ? "textLight" : "textbg"
         </div>
       </main>
     </div>
-  )
+  );
 }
