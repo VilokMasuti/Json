@@ -1,9 +1,17 @@
 "use client"
 
-import { ThemeProvider } from "../context/ThemeContext"
-
+import { ReactFlowProvider } from 'reactflow';
+import { ThemeProvider } from "../context/ThemeContext";
 
 
 export default function LayoutClient({ children }) {
-  return <ThemeProvider>{children}</ThemeProvider>
+  return (
+    <ThemeProvider>
+      <ReactFlowProvider>
+        {children}
+      </ReactFlowProvider>
+
+    </ThemeProvider>
+  )
+
 }

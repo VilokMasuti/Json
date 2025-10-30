@@ -1,41 +1,41 @@
-import { useTheme } from "../../hooks/useTheme"
-import { ThemeToggle } from "../Theme-toggle"
-const Header = ({ jsonData, handleReset, DownloadImage }) => {
-  const { theme } = useTheme()
+import { RotateCcw } from 'lucide-react';
+import { useTheme } from '../../hooks/useTheme';
+import { ThemeToggle } from '../../lib/Theme-toggle';
+
+import { Button } from '../ui/button';
+const Header = ({ jsonData, handleReset }) => {
+  const { theme } = useTheme();
   return (
     <header className="border-b border-border sticky top-0 z-10 bg-background   antialiased  font-sans ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <h1 className={`text-2xl    antialiased  font-sans
-           ${theme === "light" ? "textLight" : "textbg"
-          }
+        <h1
+          className={`text-2xl    antialiased  font-sans uppercase font-light
+           ${theme === 'light' ? 'textLight' : 'textbg'}
 
 
 
-          `}>JSON Tree Visualizer</h1>
+          `}
+        >
+          JSON Tree Visualizer
+        </h1>
         <div className="flex items-center gap-4">
           {jsonData && (
             <>
-              <Button variant="outline" size="sm" onClick={handleReset} className="gap-2 bg-transparent ">
-              <RotateCcw className="w-4 h-4" />
-              Reset
-            </Button>
-
               <Button
                 variant="outline"
                 size="sm"
-                onClick={DownloadImage}
-                className="gap-2 bg-transparent hover:bg-muted"
+                onClick={handleReset}
+                className="gap-2 bg-transparent  cursor-pointer"
               >
-                <Download className="w-4 h-4" />
-                Download
+                <RotateCcw className="w-4 h-4" />
+                Reset
               </Button>
             </>
-
           )}
           <ThemeToggle />
         </div>
       </div>
     </header>
-  )
-}
-export default Header
+  );
+};
+export default Header;
